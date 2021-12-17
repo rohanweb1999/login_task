@@ -105,13 +105,20 @@ const Signup = () => {
 
                     <div className="Bottom-class">
                         <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-                            <Button type="primary" htmlType="submit">
+                            <Button type="primary" htmlType="submit" className='signup-btn'>
                                 Sign Up
                             </Button>
                         </Form.Item>
-                        <NavLink to="/Signin" >I have already Registered</NavLink>
+
+                        <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
+                            <Button type="danger" onClick={formik.handleReset}>
+                                RESET
+                            </Button>
+                        </Form.Item>
                     </div>
+                    <NavLink to="/Signin" >I have already Registered</NavLink>
                 </form>
+
                 <div className="Side-image">
                     <img className="img" src={sideImg} alt="side view" />
                 </div>

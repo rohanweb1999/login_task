@@ -1,5 +1,5 @@
 import React from 'react'
-import { Form, Input, Button, Checkbox } from 'antd';
+import { Form, Input, Button } from 'antd';
 
 const Signin = () => {
     return (
@@ -28,11 +28,9 @@ const Signin = () => {
                     <Input.Password />
                 </Form.Item>
 
-
-
                 <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
                     <Button type="primary" htmlType="submit">
-                        Submit
+                        Sign In
                     </Button>
                 </Form.Item>
             </Form>

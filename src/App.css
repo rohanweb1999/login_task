@@ -67,21 +67,25 @@ img {
 }
 .Bottom-class {
   padding-top: 15px;
+  display: flex;
+  margin: auto;
 }
 .Side-image {
+  padding-top: 50px;
   position: relative;
   animation-name: example;
   animation-duration: 5s;
   animation-delay: 5s;
   animation-fill-mode: backwards;
   padding-right: 200px;
+  -webkit-animation: example 5s linear infinite;
 }
 @keyframes example {
   from {
     top: 0px;
   }
   to {
-    top: 50px;
+    top: 30px;
   }
 }
 @keyframes backward {
@@ -91,4 +95,41 @@ img {
   to {
     top: 0px;
   }
+}
+.signup-btn {
+  margin-right: 15px;
+}
+.reg-btn {
+  background-color: #58a1f5; /* Green */
+  border: none;
+  color: white;
+  padding: 10px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  border-radius: 5px 5px 5px 5px;
+}
+.signin-btn {
+  background-color: #4caf50; /* Green */
+  border: none;
+  color: white;
+  padding: 10px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  border-radius: 5px 5px 5px 5px;
+}
+.reg-btn:hover {
+  box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+.signin-btn:hover {
+  box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
 }
