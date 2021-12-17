@@ -3,7 +3,8 @@ import { Form, Input, Button, Checkbox } from 'antd';
 
 const Signin = () => {
     return (
-        <div>
+        <div className="signInPage">
+            <h2>Sign In</h2>
             <Form
                 name="basic"
                 labelCol={{ span: 8 }}
@@ -12,9 +13,9 @@ const Signin = () => {
                 autoComplete="off"
             >
                 <Form.Item
-                    label="Username"
-                    name="username"
-                    rules={[{ required: true, message: 'Please input your username!' }]}
+                    label="Email"
+                    name="Email"
+                    rules={[{ required: true, message: 'Please input your Email!' }]}
                 >
                     <Input />
                 </Form.Item>
@@ -27,9 +28,7 @@ const Signin = () => {
                     <Input.Password />
                 </Form.Item>
 
-                <Form.Item name="remember" valuePropName="checked" wrapperCol={{ offset: 8, span: 16 }}>
-                    <Checkbox>Remember me</Checkbox>
-                </Form.Item>
+
 
                 <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
                     <Button type="primary" htmlType="submit">

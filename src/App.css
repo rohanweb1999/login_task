@@ -21,12 +21,74 @@ h2 {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 #btn1 {
-  float: right;
+  padding-right: 20px;
 }
 #btn2 {
-  float: right;
+  padding-right: 50px;
 }
 .errorPage {
   justify-content: center;
   align-items: center;
+}
+.signupUser {
+  margin: auto;
+  margin-top: 100px;
+  padding-top: 30px;
+  width: 500px;
+  height: 100%;
+  display: grid;
+  padding-bottom: 10px;
+}
+.signInPage {
+  margin: auto;
+  margin-top: 100px;
+  width: 500px;
+  padding-top: 50px;
+}
+.items {
+  direction: flex;
+  display: flex;
+  padding-top: 15px;
+}
+.itemsNav2 {
+  display: flex;
+  margin-left: 70%;
+}
+form#basic {
+  padding-right: 100px;
+}
+img {
+  border-style: none;
+  height: 700px;
+  width: 700px;
+}
+.main-div {
+  display: flex;
+}
+.Bottom-class {
+  padding-top: 15px;
+}
+.Side-image {
+  position: relative;
+  animation-name: example;
+  animation-duration: 5s;
+  animation-delay: 5s;
+  animation-fill-mode: backwards;
+  padding-right: 200px;
+}
+@keyframes example {
+  from {
+    top: 0px;
+  }
+  to {
+    top: 50px;
+  }
+}
+@keyframes backward {
+  from {
+    top: 50px;
+  }
+  to {
+    top: 0px;
+  }
 }
