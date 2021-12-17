@@ -112,6 +112,7 @@ img {
   -webkit-transition-duration: 0.4s; /* Safari */
   transition-duration: 0.4s;
   border-radius: 5px 5px 5px 5px;
+  margin-left: 15px;
 }
 .signin-btn {
   background-color: #4caf50; /* Green */
@@ -126,6 +127,25 @@ img {
   -webkit-transition-duration: 0.4s; /* Safari */
   transition-duration: 0.4s;
   border-radius: 5px 5px 5px 5px;
+  margin-right: 10px;
+}
+.dash-btn {
+  background-color: #f7b629; /* Green */
+  border: none;
+  color: white;
+  padding: 10px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  border-radius: 5px 5px 5px 5px;
+  margin-right: 10px;
+}
+.dash-btn {
+  box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
 }
 .reg-btn:hover {
   box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);

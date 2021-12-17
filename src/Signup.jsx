@@ -38,7 +38,7 @@ const Signup = () => {
                         name="firstName"
                         onChange={formik.handleChange}
                         value={formik.values.firstName}
-                        required
+
                     />
                     <TextField
                         label="Last Name"
@@ -46,7 +46,7 @@ const Signup = () => {
                         name="lastName"
                         onChange={formik.handleChange}
                         value={formik.values.lastName}
-                        required
+
                     />
                     <TextField
                         label="Email"
@@ -55,7 +55,7 @@ const Signup = () => {
                         type="email"
                         onChange={formik.handleChange}
                         value={formik.values.email}
-                        required
+
                     />
                     <TextField
                         label="Contact"
@@ -64,7 +64,7 @@ const Signup = () => {
                         type="number"
                         onChange={formik.handleChange}
                         value={formik.values.Contact}
-                        required
+
                     />
                     <TextField
                         label="profession"
@@ -73,7 +73,7 @@ const Signup = () => {
                         type="text"
                         onChange={formik.handleChange}
                         value={formik.values.profession}
-                        required
+
                     />
                     <TextField
                         label="sallery"
@@ -82,7 +82,7 @@ const Signup = () => {
                         type="number"
                         onChange={formik.handleChange}
                         value={formik.values.sallery}
-                        required
+
                     />
                     <TextField
                         label="Password"
@@ -91,7 +91,7 @@ const Signup = () => {
                         type="password"
                         onChange={formik.handleChange}
                         value={formik.values.Password}
-                        required
+
                     />
                     <TextField
                         label="Conform Password"
@@ -100,7 +100,7 @@ const Signup = () => {
                         type="password"
                         onChange={formik.handleChange}
                         value={formik.values.cpassword}
-                        required
+
                     />
 
                     <div className="Bottom-class">

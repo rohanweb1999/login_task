@@ -11,6 +11,7 @@ import Signup from './Signup.jsx';
 import Signin from './Signin.jsx';
 import PagenotFound from './PagenotFound';
 import Navbar from './Navbar';
+import Dashboard from './Dashboard';
 // import { Button } from '@material-ui/icons/Button'
 // import '../node_modules/@material-ui/icons';
 function App() {
@@ -25,7 +26,9 @@ function App() {
           <Route exact path="/" element={<Home />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/signin" element={<Signin />} />
+          <Route path="/Dashboard" element={<Dashboard />} />
           <Route path="*" element={<PagenotFound />} />
+
 
 
         </Routes>
