@@ -30,7 +30,6 @@ function App() {
           <Route path="*" element={<PagenotFound />} />
 
 
-
         </Routes>
       </Router>
     </>

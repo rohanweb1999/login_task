@@ -1,8 +1,13 @@
+import { Empty } from "antd";
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { deleteSelectEmployee } from "./actions";
+import { deleteSelectEmployee, findInList, searchInputData } from "./actions";
 
 const Dashboard = () => {
+
+
+    const userInputFormSearch = useSelector(state => state.employeeReducer.userInputFormSearch)
+
     const employeeList = useSelector(
         (state) => state.employeeReducer.employeeList
     );
@@ -13,9 +18,9 @@ const Dashboard = () => {
     return (
         <div className="das-main-div">
             <div className="das-sub-div">
-                <input type="search"></input>
+                <input type="search" value={userInputFormSearch} onChange={(e) => dispatch(searchInputData(e.target.value), console.log("searchInputData", e.target.value))}></input>
                 <span>
-                    <button type="button">Search</button>
+                    <button type="button" onClick={dispatch(findInList())}>Search</button>
                 </span>
             </div>
             <div>

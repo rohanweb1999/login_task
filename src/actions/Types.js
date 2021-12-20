@@ -1,2 +1,4 @@
 export const SUBMIT_DATA = "SUBMIT_DATA";
 export const DELETE_SELECT_EMPLOYEE = "DELETE_SELECT_EMPLOYEE";
+export const SERCH_USER_DATA = "SERCH_USER_DATA";
+export const FIND_IN_LIST = "FIND_IN_LIST";

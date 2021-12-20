@@ -7,6 +7,7 @@ import { Form, Button } from "antd";
 import { useFormik } from "formik";
 import { useDispatch } from "react-redux";
 import { submitData } from "./actions";
+import * as Yup from 'yup';
 
 const Signup = () => {
     const formik = useFormik({
@@ -21,6 +22,7 @@ const Signup = () => {
             password: "",
             confirmPassword: "",
         },
+
         // onSubmit: (values) => {
         //   alert(JSON.stringify(values, null, 2));
         //   console.log("Data", JSON.stringify(values));
