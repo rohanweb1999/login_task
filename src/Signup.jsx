@@ -1,36 +1,41 @@
-import React from 'react'
-import { TextField } from '@material-ui/core';
-import './App.css';
-import { NavLink } from 'react-router-dom';
-import sideImg from '../src/employee.jpg'
-import { Form, Button } from 'antd';
-import { useFormik } from 'formik';
-
-
+import React from "react";
+import { TextField } from "@material-ui/core";
+import "./App.css";
+import { NavLink } from "react-router-dom";
+import sideImg from "../src/employee.jpg";
+import { Form, Button } from "antd";
+import { useFormik } from "formik";
+import { useDispatch } from "react-redux";
+import { submitData } from "./actions";
 
 const Signup = () => {
     const formik = useFormik({
         initialValues: {
             id: new Date().getTime().toString(),
-            firstName: '',
-            lastName: '',
-            email: '',
-            Contact: '',
-            profession: '',
-            sallery: '',
-            Password: '',
-            cpassword: ''
+            firstName: "",
+            lastName: "",
+            email: "",
+            contact: "",
+            profession: "",
+            salary: "",
+            password: "",
+            confirmPassword: "",
         },
-        onSubmit: values => {
-            alert(JSON.stringify(values, null, 2));
-            console.log("Data", JSON.stringify(values));
-        }
+        // onSubmit: (values) => {
+        //   alert(JSON.stringify(values, null, 2));
+        //   console.log("Data", JSON.stringify(values));
+        // },
+        onSubmit: (values) => dispatch(submitData(values), formik.handleReset()),
     });
+
+    const dispatch = useDispatch();
     return (
         <>
             <div className="main-div">
                 <form className="signupUser" onSubmit={formik.handleSubmit}>
-                    <h2>Sign Up</h2>
+                    <h2>
+                        <strong>EMPLOYEE REGISTRATION</strong>
+                    </h2>
                     <h3>Please fill in this form to create an account</h3>
                     <TextField
                         label="First Name"
@@ -38,7 +43,6 @@ const Signup = () => {
                         name="firstName"
                         onChange={formik.handleChange}
                         value={formik.values.firstName}
-
                     />
                     <TextField
                         label="Last Name"
@@ -46,7 +50,6 @@ const Signup = () => {
                         name="lastName"
                         onChange={formik.handleChange}
                         value={formik.values.lastName}
-
                     />
                     <TextField
                         label="Email"
@@ -55,16 +58,14 @@ const Signup = () => {
                         type="email"
                         onChange={formik.handleChange}
                         value={formik.values.email}
-
                     />
                     <TextField
                         label="Contact"
                         variant="standard"
-                        name="Contact"
+                        name="contact"
                         type="number"
                         onChange={formik.handleChange}
-                        value={formik.values.Contact}
-
+                        value={formik.values.contact}
                     />
                     <TextField
                         label="profession"
@@ -73,40 +74,36 @@ const Signup = () => {
                         type="text"
                         onChange={formik.handleChange}
                         value={formik.values.profession}
-
                     />
                     <TextField
-                        label="sallery"
+                        label="salary"
                         variant="standard"
-                        name="sallery"
+                        name="salary"
                         type="number"
                         onChange={formik.handleChange}
-                        value={formik.values.sallery}
-
+                        value={formik.values.salary}
                     />
                     <TextField
                         label="Password"
                         variant="standard"
-                        name="Password"
+                        name="password"
                         type="password"
                         onChange={formik.handleChange}
-                        value={formik.values.Password}
-
+                        value={formik.values.password}
                     />
                     <TextField
-                        label="Conform Password"
+                        label="Confirm Password"
                         variant="standard"
-                        name="cpassword"
+                        name="confirmPassword"
                         type="password"
                         onChange={formik.handleChange}
-                        value={formik.values.cpassword}
-
+                        value={formik.values.confirmPassword}
                     />
 
                     <div className="Bottom-class">
                         <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-                            <Button type="primary" htmlType="submit" className='signup-btn'>
-                                Sign Up
+                            <Button type="primary" htmlType="submit" className="signup-btn">
+                                ADD
                             </Button>
                         </Form.Item>
 
@@ -116,13 +113,12 @@ const Signup = () => {
                             </Button>
                         </Form.Item>
                     </div>
-                    <NavLink to="/Signin" >I have already Registered</NavLink>
+                    <NavLink to="/Signin">I have already Registered</NavLink>
                 </form>
 
                 <div className="Side-image">
                     <img className="img" src={sideImg} alt="side view" />
                 </div>
-
             </div>
         </>
     )
