@@ -10,6 +10,10 @@ import { submitData } from "./actions";
 import * as Yup from 'yup';
 
 const Signup = () => {
+
+
+
+
     const formik = useFormik({
         initialValues: {
             id: new Date().getTime().toString(),
@@ -27,9 +31,11 @@ const Signup = () => {
         //   alert(JSON.stringify(values, null, 2));
         //   console.log("Data", JSON.stringify(values));
         // },
-        onSubmit: (values) => dispatch(submitData(values), formik.handleReset()),
-    });
 
+        onSubmit: (values) => dispatch(submitData(values),
+            formik.handleReset()),
+    });
+    // console.log(formik.values.firstName);
     const dispatch = useDispatch();
     return (
         <>

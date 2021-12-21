@@ -49,6 +49,7 @@ h2 {
   direction: flex;
   display: flex;
   padding-top: 15px;
+  background-color: rgb(211, 239, 247);
 }
 .itemsNav2 {
   display: flex;
@@ -169,10 +170,12 @@ img {
 .employeeData {
   border: 1px solid;
   margin: 40px;
+  width: 20%;
+  display: inline-table;
 }
 .employeeData:hover {
   box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
-  background-color: rgb(187, 186, 182);
+  background-color: rgba(168, 166, 164, 0.287);
 }
 .editButton {
   background-color: #58a1f5;
@@ -209,4 +212,17 @@ img {
 }
 .deleteButton:hover {
   box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+[type="search"] {
+  outline-offset: -2px;
+  -webkit-appearance: none;
+  width: 20%;
+  padding: 10px;
+  border-radius: 15px;
+  text-align: center;
+  border-color: rgb(226, 212, 212);
+  margin-top: 15px;
+}
+[type="search"]:hover {
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.24), 0 10px 20px 0 rgba(0, 0, 0, 0.19);
 }

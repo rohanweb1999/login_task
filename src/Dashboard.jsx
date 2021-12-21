@@ -1,7 +1,7 @@
-import { Empty } from "antd";
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { deleteSelectEmployee, findInList, searchInputData } from "./actions";
+import { deleteSelectEmployee, searchInputData, selectEditList } from "./actions";
+
 
 const Dashboard = () => {
 
@@ -11,22 +11,23 @@ const Dashboard = () => {
     const employeeList = useSelector(
         (state) => state.employeeReducer.employeeList
     );
-    console.log("Dashboard", employeeList);
+    console.log("EmployeeList", employeeList);
 
     const dispatch = useDispatch();
 
     return (
         <div className="das-main-div">
             <div className="das-sub-div">
-                <input type="search" value={userInputFormSearch} onChange={(e) => dispatch(searchInputData(e.target.value), console.log("searchInputData", e.target.value))}></input>
-                <span>
-                    <button type="button" onClick={dispatch(findInList())}>Search</button>
-                </span>
+
+                <input type="search" className="serchField" placeholder="Serch Employee details based on name or salary......"
+                    value={userInputFormSearch}
+                    onChange={(e) => dispatch(searchInputData(e.target.value),
+                        console.log("searchInputData", e.target.value))}>
+                </input>
+
             </div>
             <div>
-                <h2>
-                    <strong>EMPLOYEE LIST</strong>
-                </h2>
+
                 {employeeList ?
                     <div className="list-div">
                         {employeeList.map((element, index) => {
@@ -54,11 +55,16 @@ const Dashboard = () => {
                                         <p>{element.profession}</p>
                                     </div>
                                     <div className="employeeFeild">
-                                        <label>Salery:-</label>
-                                        <p>{element.salery}</p>
+                                        <label>Salary:-</label>
+                                        <p>{element.salary}</p>
                                     </div>
                                     <div className="functionalButtons">
-                                        <button className="editButton">EDIT</button>
+                                        <button className="editButton"
+                                            onClick={() => dispatch(selectEditList(element.id),
+                                                console.log("edit list", element.id),
+                                            )}>
+                                            EDIT
+                                        </button>
                                         <button
                                             className="deleteButton"
                                             onClick={() => dispatch(deleteSelectEmployee(index))}
