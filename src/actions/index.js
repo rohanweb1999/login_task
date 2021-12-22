@@ -1,4 +1,4 @@
-import { DELETE_SELECT_EMPLOYEE, SELECT_EDIT_LIST, SERCH_USER_DATA, SUBMIT_DATA } from "./Types"
+import { DELETE_SELECT_EMPLOYEE, SELECT_EDIT_LIST, SERCH_USER_DATA, SUBMIT_DATA, UPDATE_SELECTED_USERDATA } from "./Types"
 
 
 
@@ -15,6 +15,7 @@ export const deleteSelectEmployee = (index) => {
     }
 }
 export const searchInputData = (data) => {
+    console.log();
     return {
         type: SERCH_USER_DATA,
         data
@@ -25,5 +26,10 @@ export const selectEditList = (id) => {
     return {
         type: SELECT_EDIT_LIST,
         id
+    }
+}
+export const updateSelectedUserdata = () => {
+    return {
+        type: UPDATE_SELECTED_USERDATA
     }
 }

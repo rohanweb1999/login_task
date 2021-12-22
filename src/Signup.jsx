@@ -5,38 +5,34 @@ import { NavLink } from "react-router-dom";
 import sideImg from "../src/employee.jpg";
 import { Form, Button } from "antd";
 import { useFormik } from "formik";
-import { useDispatch } from "react-redux";
-import { submitData } from "./actions";
+import { useDispatch, useSelector } from "react-redux";
+import { submitData, updateSelectedUserdata } from "./actions";
 import * as Yup from 'yup';
 
 const Signup = () => {
-
-
-
+    // const [toggleButton, settoggleButton] = useState(true);
+    const selectedEditId = useSelector(
+        (state) => state.employeeReducer.selectedEditId
+    );
+    const formState = useSelector((state) => state.employeeReducer.formState);
 
     const formik = useFormik({
-        initialValues: {
-            id: new Date().getTime().toString(),
-            firstName: "",
-            lastName: "",
-            email: "",
-            contact: "",
-            profession: "",
-            salary: "",
-            password: "",
-            confirmPassword: "",
-        },
-
+        initialValues: formState,
         // onSubmit: (values) => {
         //   alert(JSON.stringify(values, null, 2));
         //   console.log("Data", JSON.stringify(values));
         // },
-
-        onSubmit: (values) => dispatch(submitData(values),
-            formik.handleReset()),
+        onSubmit: (values) => dispatch(submitData(values), formik.handleReset()),
     });
-    // console.log(formik.values.firstName);
+
+    // formik.values = formState;
+
     const dispatch = useDispatch();
+
+    // useEffect(() => {
+    //   console.log("useEffect");
+    //   console.log("selectedEditId", selectedEditId);
+    // }, []);
     return (
         <>
             <div className="main-div">
@@ -109,11 +105,30 @@ const Signup = () => {
                     />
 
                     <div className="Bottom-class">
-                        <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-                            <Button type="primary" htmlType="submit" className="signup-btn">
-                                ADD
-                            </Button>
-                        </Form.Item>
+                        {!selectedEditId ? (
+                            <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
+                                <Button
+                                    type="primary"
+                                    htmlType="submit"
+                                    className="signup-btn"
+                                // onClick={settoggleButton(true)}
+                                >
+                                    ADD
+                                </Button>
+                            </Form.Item>
+                        ) : (
+                            <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
+                                <Button
+                                    type="primary"
+                                    htmlType="submit"
+                                    className="signup-btn"
+                                    // onClick={settoggleButton(false)}
+                                    onClick={() => dispatch(updateSelectedUserdata())}
+                                >
+                                    UPDATE
+                                </Button>
+                            </Form.Item>
+                        )}
 
                         <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
                             <Button type="danger" onClick={formik.handleReset}>
@@ -129,7 +144,7 @@ const Signup = () => {
                 </div>
             </div>
         </>
-    )
-}
+    );
+};
 
-export default Signup
+export default Signup;

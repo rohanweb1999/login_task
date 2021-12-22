@@ -1,12 +1,13 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { deleteSelectEmployee, searchInputData, selectEditList } from "./actions";
+import { NavLink } from "react-router-dom";
 
 
 const Dashboard = () => {
-
-
-    const userInputFormSearch = useSelector(state => state.employeeReducer.userInputFormSearch)
+    const userInputFormSearch = useSelector(
+        (state) => state.employeeReducer.userInputFormSearch
+    );
 
     const employeeList = useSelector(
         (state) => state.employeeReducer.employeeList
@@ -18,17 +19,21 @@ const Dashboard = () => {
     return (
         <div className="das-main-div">
             <div className="das-sub-div">
-
-                <input type="search" className="serchField" placeholder="Serch Employee details based on name or salary......"
+                <input
+                    type="search"
+                    className="serchField"
+                    placeholder="Serch Employee details based on name or salary......"
                     value={userInputFormSearch}
-                    onChange={(e) => dispatch(searchInputData(e.target.value),
-                        console.log("searchInputData", e.target.value))}>
-                </input>
-
+                    onChange={(e) =>
+                        dispatch(
+                            searchInputData(e.target.value),
+                            console.log("searchInputData", e.target.value)
+                        )
+                    }
+                ></input>
             </div>
             <div>
-
-                {employeeList ?
+                {employeeList ? (
                     <div className="list-div">
                         {employeeList.map((element, index) => {
                             // return <p key={element.id}>{JSON.stringify(element)}</p>;
@@ -59,12 +64,14 @@ const Dashboard = () => {
                                         <p>{element.salary}</p>
                                     </div>
                                     <div className="functionalButtons">
-                                        <button className="editButton"
-                                            onClick={() => dispatch(selectEditList(element.id),
-                                                console.log("edit list", element.id),
-                                            )}>
-                                            EDIT
-                                        </button>
+                                        <NavLink to="/Signup">
+                                            <button
+                                                className="editButton"
+                                                onClick={() => dispatch(selectEditList(element.id))}
+                                            >
+                                                EDIT
+                                            </button>
+                                        </NavLink>
                                         <button
                                             className="deleteButton"
                                             onClick={() => dispatch(deleteSelectEmployee(index))}
@@ -76,11 +83,11 @@ const Dashboard = () => {
                             );
                         })}
                     </div>
-                    :
+                ) : (
                     <div className="dataNotFound">
                         <p>No Data Found</p>
                     </div>
-                }
+                )}
             </div>
         </div>
     );
