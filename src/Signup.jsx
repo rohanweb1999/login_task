@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { TextField } from "@material-ui/core";
 import "./App.css";
-import { NavLink, useHistory } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import sideImg from "../src/employee.jpg";
 import { Form, Button } from "antd";
 import { useFormik } from "formik";
@@ -10,6 +10,7 @@ import { submitData, updateSelectedUserdata, selectEditList } from "./actions";
 import queryString from 'query-string';
 const Signup = () => {
 
+    const history = useNavigate();
 
     const { id } = queryString.parse(window.location.search)
 
@@ -19,7 +20,6 @@ const Signup = () => {
     );
 
     const formState = useSelector((state) => state.employeeReducer.formState);
-
     const formik = useFormik({
         initialValues: {
             firstName: "",
@@ -33,11 +33,16 @@ const Signup = () => {
         },
 
         onSubmit: (values) => {
+
             if (id) {
                 dispatch(updateSelectedUserdata(id, values))
+                history('/Dashboard')
+
             } else {
+
                 dispatch(submitData(values))
                 formik.handleReset()
+                history('/Dashboard')
             }
         }
 
