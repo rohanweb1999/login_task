@@ -1,38 +1,62 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { TextField } from "@material-ui/core";
 import "./App.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import sideImg from "../src/employee.jpg";
 import { Form, Button } from "antd";
 import { useFormik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
-import { submitData, updateSelectedUserdata } from "./actions";
-import * as Yup from 'yup';
-
+import { submitData, updateSelectedUserdata, selectEditList } from "./actions";
+import queryString from 'query-string';
 const Signup = () => {
+
+
+    const { id } = queryString.parse(window.location.search)
+
     // const [toggleButton, settoggleButton] = useState(true);
     const selectedEditId = useSelector(
         (state) => state.employeeReducer.selectedEditId
     );
+
     const formState = useSelector((state) => state.employeeReducer.formState);
 
     const formik = useFormik({
-        initialValues: formState,
-        // onSubmit: (values) => {
-        //   alert(JSON.stringify(values, null, 2));
-        //   console.log("Data", JSON.stringify(values));
-        // },
-        onSubmit: (values) => dispatch(submitData(values), formik.handleReset()),
+        initialValues: {
+            firstName: "",
+            lastName: "",
+            email: "",
+            contact: "",
+            profession: "",
+            salary: "",
+            password: "",
+            confirmPassword: "",
+        },
+
+        onSubmit: (values) => {
+            if (id) {
+                dispatch(updateSelectedUserdata(id, values))
+            } else {
+                dispatch(submitData(values))
+                formik.handleReset()
+            }
+        }
+
     });
 
-    // formik.values = formState;
+    useEffect(() => {
+        if (id) {
+            dispatch(selectEditList(id))
+        }
+    }, [])
+
+    useEffect(() => {
+        if (id && formState) {
+            formik.setValues(formState)
+        }
+    }, [formState])
 
     const dispatch = useDispatch();
 
-    // useEffect(() => {
-    //   console.log("useEffect");
-    //   console.log("selectedEditId", selectedEditId);
-    // }, []);
     return (
         <>
             <div className="main-div">
@@ -106,6 +130,7 @@ const Signup = () => {
 
                     <div className="Bottom-class">
                         {!selectedEditId ? (
+
                             <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
                                 <Button
                                     type="primary"
@@ -122,8 +147,8 @@ const Signup = () => {
                                     type="primary"
                                     htmlType="submit"
                                     className="signup-btn"
-                                    // onClick={settoggleButton(false)}
-                                    onClick={() => dispatch(updateSelectedUserdata())}
+                                // onClick={settoggleButton(false)}
+                                // onClick={() => dispatch(updateSelectedUserdata())}
                                 >
                                     UPDATE
                                 </Button>

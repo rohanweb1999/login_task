@@ -20,8 +20,6 @@ const initialState = {
 const employeeReducer = (state = initialState, action) => {
     switch (action.type) {
         case SUBMIT_DATA:
-            console.log("state", state.employeeList);
-            console.log("action.userData", action.userData);
             action.userData = {
                 ...action.userData,
                 id: new Date().getTime().toString()
@@ -48,11 +46,9 @@ const employeeReducer = (state = initialState, action) => {
                 employeeList: state.tempData.filter((element) => element.firstName.startsWith(state.userInputFormSearch) || element.salary.toString().startsWith(state.userInputFormSearch)),
             }
         case SELECT_EDIT_LIST:
-            console.log("select edit list", action.id);
             const selectedObj = state.tempData.find(
                 (element) => element.id === action.id
             );
-            console.log("selectObj", selectedObj);
             return {
                 ...state,
                 selectedEditId: action.id,
@@ -61,14 +57,12 @@ const employeeReducer = (state = initialState, action) => {
 
         case UPDATE_SELECTED_USERDATA:
             // const newUpdateData = state.employeeList.map((e) => e.id === state.selectedEditId ? { ...e, data: state.formState } : e)
-            // console.log("newUpdateData", newUpdateData);
+            const empInd = state.employeeList.findIndex(res => res.id === action.id)
+            const tempInd = state.tempData.findIndex(res => res.id === action.id)
+            state.employeeList[empInd] = action.data
+            state.tempData[empInd] = action.data
             return {
-                ...state,
-                // employeeList: newUpdateData,
-                // formState: {
-                //     ...state.formState
-                // }
-
+                ...state
             }
 
         default:

@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { deleteSelectEmployee, searchInputData, selectEditList } from "./actions";
+import { deleteSelectEmployee, searchInputData } from "./actions";
 import { NavLink } from "react-router-dom";
 
 
@@ -15,7 +15,6 @@ const Dashboard = () => {
     console.log("EmployeeList", employeeList);
 
     const dispatch = useDispatch();
-
     return (
         <div className="das-main-div">
             <div className="das-sub-div">
@@ -64,10 +63,10 @@ const Dashboard = () => {
                                         <p>{element.salary}</p>
                                     </div>
                                     <div className="functionalButtons">
-                                        <NavLink to="/Signup">
+                                        <NavLink to={`/signup?id=${element.id}`}>
                                             <button
                                                 className="editButton"
-                                                onClick={() => dispatch(selectEditList(element.id))}
+                                            // onClick={() => dispatch(selectEditList(element.id))}
                                             >
                                                 EDIT
                                             </button>

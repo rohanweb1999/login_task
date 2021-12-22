@@ -5,7 +5,7 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  useParams
+
 } from "react-router-dom";
 import Home from './Home.jsx';
 import Signup from './Signup.jsx';
@@ -18,7 +18,6 @@ import Dashboard from './Dashboard';
 function App() {
 
 
-
   return (
     <>
       <Router>
@@ -27,6 +26,7 @@ function App() {
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/signup/:id" element={<Signup />} />
           <Route path="/signin" element={<Signin />} />
           <Route path="/Dashboard" element={<Dashboard />} />
           <Route path="*" element={<PagenotFound />} />
