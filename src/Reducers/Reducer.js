@@ -22,7 +22,6 @@ const employeeReducer = (state = initialState, action) => {
         case SUBMIT_DATA:
             action.userData = {
                 ...action.userData,
-                id: new Date().getTime().toString()
             }
             return {
                 employeeList: [...state.employeeList, action.userData],
@@ -32,13 +31,13 @@ const employeeReducer = (state = initialState, action) => {
 
 
         case DELETE_SELECT_EMPLOYEE:
+            console.log("id", action.id);
             alert("Confirm You delete this data")
             return {
                 ...state,
-                employeeList: state.employeeList.filter((e, i) => i !== action.index),
-                tempData: state.employeeList.filter((e, i) => i !== action.index)
+                employeeList: state.employeeList.filter((e) => e.id !== action.id),
+                tempData: state.employeeList.filter((e) => e.id !== action.id)
             }
-
         case SERCH_USER_DATA:
             return {
                 ...state,

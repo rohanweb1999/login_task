@@ -8,6 +8,7 @@ import { useFormik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import { submitData, updateSelectedUserdata, selectEditList } from "./actions";
 import queryString from 'query-string';
+import Axios from 'axios'
 const Signup = () => {
 
     const history = useNavigate();
@@ -22,6 +23,7 @@ const Signup = () => {
     const formState = useSelector((state) => state.employeeReducer.formState);
     const formik = useFormik({
         initialValues: {
+            id: new Date().getTime().toString(),
             firstName: "",
             lastName: "",
             email: "",
@@ -40,12 +42,19 @@ const Signup = () => {
 
             } else {
 
-                dispatch(submitData(values))
-                formik.handleReset()
-                history('/Dashboard')
+                Axios.post(`/signUp`, values)
+                    .then((res) => {
+                        alert("Registration Successfully");
+                        dispatch(submitData(values))
+                        formik.handleReset()
+                        history('/Dashboard')
+                    })
+                    .catch(err => {
+                        alert("Invalid Registration");
+                        console.log(err)
+                    })
             }
         }
-
     });
 
     useEffect(() => {

@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { deleteSelectEmployee, searchInputData } from "./actions";
 import { NavLink } from "react-router-dom";
 
-
 const Dashboard = () => {
     const userInputFormSearch = useSelector(
         (state) => state.employeeReducer.userInputFormSearch
@@ -71,12 +70,15 @@ const Dashboard = () => {
                                                 EDIT
                                             </button>
                                         </NavLink>
+
                                         <button
                                             className="deleteButton"
-                                            onClick={() => dispatch(deleteSelectEmployee(index))}
+                                            onClick={() => dispatch(deleteSelectEmployee(element.id))}
                                         >
                                             DELETE
                                         </button>
+
+
                                     </div>
                                 </div>
                             );

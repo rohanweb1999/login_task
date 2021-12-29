@@ -3,7 +3,7 @@ import { DELETE_SELECT_EMPLOYEE, SELECT_EDIT_LIST, SERCH_USER_DATA, SUBMIT_DATA,
 
 
 export const submitData = (userData) => {
-    // axios.post('http://localhost:3001/register', userData)
+    // axios.post('http://localhost:4000/addEmployee', userData)
     return {
         type: SUBMIT_DATA,
         userData,
